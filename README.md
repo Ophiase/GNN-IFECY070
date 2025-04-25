@@ -3,14 +3,25 @@
 Simple project for a course on graph neural networks.
 
 TODO:
-- Graphon generators (image generators)
-- Graphon samplers
+
+- $\checkmark$ Graphon generators (image generators)
+- $\checkmark$ Graphon samplers
     - $\Bbb R^2$ coordinates?
     - discretisation?
-- Show sampled graphon
-- Sampling benchmark?
+- $\checkmark$ Show sampled graphon
+-  Sampling benchmark?
     - Density, clustering, ..
-- Phenomenon to model?
-    - Substance diffusion?
-- GNN
+- Phenomenon to model
+    - Valid
+        - Heat (or Diffusion) Dynamics
+    - Random Walks & Hitting Times
+    - Epidemic Spread (SI/SIR/SIS Models)
+    - Synchronization of OScillators (Kuramoto Model) 
+    - Electrical Resistor Network
+    - Percolation&  Giant-Component Formation
+    - Reaction-Diffusion on Networks
     - Predict phenomenon
+    - Navier-Stroke Flow (because of the pressure)
+    - Electrostatic Potentials (Coulomb’s Law)
+    - Fractional Laplacian Diffusion
+- Graph Neural Network
