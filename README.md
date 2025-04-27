@@ -1,8 +1,8 @@
 # 🌐 GNN-IFECY070
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Apache](https://img.shields.io/badge/License-Apache%202.0-D22128?style=for-the-badge&logo=apache&logoColor=white)  ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)  
 
-This project is part of a course on graph neural networks. The main objectives are:  
-
+This project is part of a course on graph neural networks and large networks of interaction.\
+The main objectives are:  
 - Model a physical phenomenon on realizations of a [Graphon](https://fr.wikipedia.org/wiki/Graphon).  
 - Train a graph neural network to replicate this phenomenon.  
 - Benchmark the results.  
@@ -17,8 +17,8 @@ This project is part of a course on graph neural networks. The main objectives a
 - $\checkmark$ Visualize sampled graphons  
 - Sampling benchmark:  
     - Density, clustering, etc.  
-- Phenomena to model:  
-    - **Valid options:**  
+- $\checkmark$ Phenomena to model:  
+    - **Potential options:**  
         - Heat (or Diffusion) Dynamics  
         - Random Walks & Hitting Times  
         - Epidemic Spread (SI/SIR/SIS Models)  
@@ -29,14 +29,18 @@ This project is part of a course on graph neural networks. The main objectives a
         - Predicting phenomena  
         - Navier-Stokes Flow (pressure-based)  
         - Electrostatic Potentials (Coulomb’s Law)  
-        - Fractional Laplacian Diffusion  
-- Implement Graph Neural Network  
-- Benchmark and analyze results  
+        - Fractional Laplacian Diffusion
+    - Choosen
+        - Heat (or Diffusion) Dynamics  
+        - Random Walks & Hitting Times  
+        - Percolation & Giant-Component Formation  
+- $\checkmark$ Build datasets
+- $\checkmark$ Implement Graph like Neural Network to approximate the phenomena  
+- $\checkmark$ Benchmark and analyze results  
 - Write the final report  
 
-## Other
+## Datasets
 
-Datasets
 - Heat Diffusion: 
     - Graph $\to$ Node
         - Possible architectures: GCN, GraphSAGE, GAT

@@ -45,6 +45,64 @@ class HeatGCN(nn.Module):
         x = self.convs[-1](x, edge_index)
         return x.squeeze(-1)
 
+class SkipGramRW(nn.Module):
+    """
+    Skip-Gram model for random-walk node embeddings.
+    Learns two embedding tables (target & context) and uses
+    noise-contrastive estimation (negative sampling).
+    """
+    def __init__(
+        self,
+        num_nodes: int,
+        embedding_dim: int = 64,
+    ):
+        """
+        Args:
+            num_nodes: total number of nodes in the graph
+            embedding_dim: dimensionality of the embeddings
+        """
+        super().__init__()
+        self.target_emb = nn.Embedding(num_nodes, embedding_dim)
+        self.context_emb = nn.Embedding(num_nodes, embedding_dim)
+
+        # init
+        nn.init.xavier_uniform_(self.target_emb.weight)
+        nn.init.xavier_uniform_(self.context_emb.weight)
+
+    def forward(
+        self,
+        centers: torch.LongTensor,       # shape (B,)
+        contexts: torch.LongTensor,      # shape (B,)
+        negatives: torch.LongTensor      # shape (B, K)
+    ) -> torch.Tensor:
+        """
+        Compute the skip-gram loss for one batch.
+
+        Returns the averaged NCE loss over the batch.
+        """
+        # embed
+        v_c = self.target_emb(centers)                      # (B, D)
+        v_o = self.context_emb(contexts)                    # (B, D)
+        v_n = self.context_emb(negatives)                   # (B, K, D)
+
+        # positive score (B,)
+        score_pos = torch.sum(v_c * v_o, dim=1)
+        log_pos = F.logsigmoid(score_pos)
+
+        # negative scores (B, K)
+        # for each negative sample, dot with center
+        score_neg = torch.bmm(v_n, v_c.unsqueeze(2)).squeeze(2)  # (B, K)
+        log_neg = F.logsigmoid(-score_neg).sum(1)                # sum over K
+
+        # final NCE loss
+        loss = - (log_pos + log_neg).mean()
+        return loss
+
+    def get_embeddings(self) -> torch.Tensor:
+        """
+        Return the learned target embeddings (num_nodes, embedding_dim).
+        """
+        return self.target_emb.weight.data
 
 class RWNode2VecWrapper(nn.Module):
     """
