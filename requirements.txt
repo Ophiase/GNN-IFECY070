@@ -2,3 +2,7 @@ numpy
 networkx
 matplotlib
 perlin_noise
+noise
+torch_geometrics
+torch
+sickit-learn

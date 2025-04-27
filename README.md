@@ -33,3 +33,19 @@ This project is part of a course on graph neural networks. The main objectives a
 - Implement Graph Neural Network  
 - Benchmark and analyze results  
 - Write the final report  
+
+## Other
+
+Datasets
+- Heat Diffusion: 
+    - Graph $\to$ Node
+        - Possible architectures: GCN, GraphSAGE, GAT
+    - Predict each node’s steady‐state temperature (continuous).
+- Random-Walk Visitation: 
+    - Graph $\to$ Sequence
+        - Possible architectures: Sequence‐GNN (GGNN), PointerNet
+    - Generate length-L node visitation sequences.
+- Bond Percolation: Graph $\to$ Node
+    - Grah $\to$ Node
+        - Possible architectures: GCN + node‐regressor MLP
+    - Assign each node its connected-component size (integer).
