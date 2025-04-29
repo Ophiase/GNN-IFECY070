@@ -2,42 +2,39 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Apache](https://img.shields.io/badge/License-Apache%202.0-D22128?style=for-the-badge&logo=apache&logoColor=white)  ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)  
 
 This project is part of a course on graph neural networks and large networks of interaction.\
-The main objectives are:  
+I was tasked to investigate the usages of graphons that involve graph neural networks.
+My main objective where to:
 - Model a physical phenomenon on realizations of a [Graphon](https://fr.wikipedia.org/wiki/Graphon).  
 - Train a graph neural network to replicate this phenomenon.  
-- Benchmark the results.  
-- Document findings in a report.  
+- Benchmark the results.
+- Document findings in a [report](REPORT.md).
 
-### TODO  
+### TODO 
 
 - $\checkmark$ Graphon generators (image generators)  
 - $\checkmark$ Graphon samplers  
-    - $\mathbb{R}^2$ coordinates?  
-    - Discretization?  
 - $\checkmark$ Visualize sampled graphons  
 - Sampling benchmark:  
-    - Density, clustering, etc.  
+    - Density? 
+    - Clustering?  
 - $\checkmark$ Phenomena to model:  
-    - **Potential options:**  
-        - Heat (or Diffusion) Dynamics  
-        - Random Walks & Hitting Times  
-        - Epidemic Spread (SI/SIR/SIS Models)  
-        - Synchronization of Oscillators (Kuramoto Model)  
-        - Electrical Resistor Network  
-        - Percolation & Giant-Component Formation  
-        - Reaction-Diffusion on Networks  
-        - Predicting phenomena  
-        - Navier-Stokes Flow (pressure-based)  
-        - Electrostatic Potentials (Coulomb’s Law)  
-        - Fractional Laplacian Diffusion
     - Choosen
         - Heat (or Diffusion) Dynamics  
         - Random Walks & Hitting Times  
+            - Not finished.
         - Percolation & Giant-Component Formation  
+    - **Other potential options to investigate:**
+        - Epidemic Spread (SI/SIR/SIS Models)  
+        - Synchronization of Oscillators (Kuramoto Model)  
+        - Electrical Resistor Network  
+        - Reaction-Diffusion on Networks  
+        - Navier-Stokes Flow (pressure-based)  
+        - Electrostatic Potentials (Coulomb’s Law)  
+        - Fractional Laplacian Diffusion
 - $\checkmark$ Build datasets
 - $\checkmark$ Implement Graph like Neural Network to approximate the phenomena  
-- $\checkmark$ Benchmark and analyze results  
-- Write the final report  
+- $\checkmark$ benchmark and analyze results  
+- $\checkmark$ Write the final report  
 
 ## Datasets
 

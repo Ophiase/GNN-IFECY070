@@ -13,7 +13,8 @@ We focus on three phenomena—heat diffusion, random walks, and bond percolation
 
 ## 1. Graphons: A Primer  
 ### 1.1 Definition  
-A **graphon** is a measurable function $W: [0,1]^2 \to [0,1]$ that represents the limit of dense graph sequences. It encodes the probability of an edge between two nodes $u,v \in [0,1]$ as $W(u,v)$. Graphons generalize stochastic block models and enable sampling of graphs of arbitrary size while preserving structural properties.  
+A **graphon** is a measurable function $W: [0,1]^2 \to [0,1]$ that represents the limit of dense graph sequences. It encodes the probability of an edge between two nodes $u,v \in [0,1]$ as $W(u,v)$.\
+Graphons generalize stochastic block models and enable sampling of graphs of arbitrary size while preserving structural properties.
 
 ### 1.2 Role in This Project  
 Graphons act as **generators** for synthetic graphs. By sampling node coordinates $\{x_i\} \subset [0,1]$ and connecting nodes $i,j$ with probability $W(x_i,x_j)$, we create:  
@@ -24,11 +25,24 @@ Graphons act as **generators** for synthetic graphs. By sampling node coordinate
 ### 1.3 Examples
 
 In ``graphon.ipynb`` we give examples of graphon samples from ``graphon_generator.py``:
-
-![|100](resources/graphon_constant.png) ![|100](resources/graphon_constant_samples.png)
-![|100](resources/graphon_piecewise.png) ![|100](resources/graphon_piecewise_samples.png)
-![|100](resources/graphon_min.png) ![|100](resources/graphon_min_samples.png)
-![|100](resources/graphon_perlin.png) ![|100](resources/graphon_perlin_samples.png)
+<div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img src="resources/graphon_constant.png" alt="Graphon Constant" style="width: 200px;">
+    <img src="resources/graphon_constant_samples.png" alt="Graphon Constant Samples" style="width: 500px;">
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img src="resources/graphon_piecewise.png" alt="Graphon Piecewise" style="width: 200px;">
+    <img src="resources/graphon_piecewise_samples.png" alt="Graphon Piecewise Samples" style="width: 500px;">
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img src="resources/graphon_min.png" alt="Graphon Min" style="width: 200px;">
+    <img src="resources/graphon_min_samples.png" alt="Graphon Min Samples" style="width: 500px;">
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <img src="resources/graphon_perlin.png" alt="Graphon Perlin" style="width: 200px;">
+    <img src="resources/graphon_perlin_samples.png" alt="Graphon Perlin Samples" style="width: 500px;">
+  </div>
+</div>
 
 ---
 
