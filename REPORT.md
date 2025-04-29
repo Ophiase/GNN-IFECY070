@@ -1,6 +1,10 @@
 # GNNs for Simulating Physical Phenomena on Graphons  
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Apache](https://img.shields.io/badge/License-Apache%202.0-D22128?style=for-the-badge&logo=apache&logoColor=white)  ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)  
+
 **A Report on Methodology, Implementation, and Theoretical Insights**  
+
+[github repository](https://github.com/Ophiase/GNN-IFECY070)
 
 ---
 

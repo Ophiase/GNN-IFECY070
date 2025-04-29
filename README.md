@@ -1,10 +1,12 @@
-# 🌐 GNN-IFECY070
+# 🌐 [GNN-IFECY070](https://github.com/Ophiase/GNN-IFECY070)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![Apache](https://img.shields.io/badge/License-Apache%202.0-D22128?style=for-the-badge&logo=apache&logoColor=white)  ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)  
 
+**University's deadline:** 30/04/25
+
 This project is part of a course on graph neural networks and large networks of interaction.\
-I was tasked to investigate the usages of graphons that involve graph neural networks.
+I was tasked to investigate the usages of graphons that involve graph neural networks.\
 My main objective where to:
-- Model a physical phenomenon on realizations of a [Graphon](https://fr.wikipedia.org/wiki/Graphon).  
+- Model a physical phenomenon on realizations of a [Graphon](https://fr.wikipedia.org/wiki/Graphon).
 - Train a graph neural network to replicate this phenomenon.  
 - Benchmark the results.
 - Document findings in a [report](REPORT.md).
@@ -38,15 +40,16 @@ My main objective where to:
 
 ## Datasets
 
+We choose to model the following phenomena:
 - Heat Diffusion: 
     - Graph $\to$ Node
-        - Possible architectures: GCN, GraphSAGE, GAT
+        - Possible architectures: [GCN](https://medium.com/data-science/graph-convolutional-networks-introduction-to-gnns-24b3f60d6c95), GraphSAGE, [GAT](https://arxiv.org/abs/1710.10903)
     - Predict each node’s steady‐state temperature (continuous).
 - Random-Walk Visitation: 
     - Graph $\to$ Sequence
-        - Possible architectures: Sequence‐GNN (GGNN), PointerNet
+        - Possible architectures: Sequence‐GNN ([GGNN](https://arxiv.org/abs/1511.05493)), [PointerNet](https://paperswithcode.com/method/pointer-net)
     - Generate length-L node visitation sequences.
 - Bond Percolation: Graph $\to$ Node
-    - Grah $\to$ Node
-        - Possible architectures: GCN + node‐regressor MLP
+    - Graph $\to$ Node
+        - Possible architectures: [GCN](https://medium.com/data-science/graph-convolutional-networks-introduction-to-gnns-24b3f60d6c95) + node‐regressor MLP
     - Assign each node its connected-component size (integer).
