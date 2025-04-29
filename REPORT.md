@@ -50,8 +50,12 @@ In ``graphon.ipynb`` we give examples of graphon samples from ``graphon_generato
 
 ---
 
-## 2. Implemented Physical Phenomena as datasets 
-### 2.1 Heat Diffusion  
+## 2. Graph Neural Network
+
+---
+
+## 3. Implemented Physical Phenomena as datasets 
+### 3.1 Heat Diffusion  
 **Phenomenon**: Steady-state temperature distribution under Dirichlet boundary conditions (fixed-temperature nodes).  
 **Modeling**:  
 - Solve $L\mathbf{T} = -\mathbf{q}$ where $L$ is the graph Laplacian and $\mathbf{q}$ is the heat source vector.
@@ -59,7 +63,7 @@ In ``graphon.ipynb`` we give examples of graphon samples from ``graphon_generato
 **GNN Approach**:  
 - **HeatGCN**: Node-level regression (GCN layers) to predict final temperatures. Input: initial temps; Output: steady-state temps.  
 
-### 2.2 Random Walks  
+### 3.2 Random Walks  
 **Phenomenon**: Node visitation patterns from length-$L$ random walks.  
 **Modeling**:  
 - Generate walks via transition matrix $P = D^{-1}A$.
@@ -67,7 +71,7 @@ In ``graphon.ipynb`` we give examples of graphon samples from ``graphon_generato
 **GNN Approach**:  
 - **SkipGramRW**: Node2Vec-inspired embeddings trained via negative sampling on walk sequences.  
 
-### 2.3 Bond Percolation  
+### 3.3 Bond Percolation  
 **Phenomenon**: Size of connected components after random edge removal (probability $p$).  
 **Modeling**:  
 - Simulate percolation, assign each node its component size.  
@@ -77,8 +81,8 @@ In ``graphon.ipynb`` we give examples of graphon samples from ``graphon_generato
 
 ---
 
-## 3. Methodology: From Graphons to GNNs  
-### 3.1 Pipeline  
+## 4. Methodology: From Graphons to GNNs  
+### 4.1 Pipeline  
 1. **Graphon Generation**: Create $W(u,v)$ (e.g., step functions, rank-based).  
 2. **Graph Sampling**: Sample $n$-node graphs from $W$.  
 3. **Phenomenon Simulation**: Solve heat diffusion, generate walks, or percolate edges.  
@@ -87,7 +91,7 @@ In ``graphon.ipynb`` we give examples of graphon samples from ``graphon_generato
    - Percolation: $\{(G_i, \mathbf{c})\}$ (component sizes)  
 5. **GNN Training**: Learn mappings $G \rightarrow \text{node/sequence outputs}$.  
 
-### 3.2 Theoretical Motivation  
+### 4.2 Theoretical Motivation  
 Using graphons ensures:  
 - **Data Diversity**: Sampled graphs cover the graphon’s structural spectrum.  
 - **Continuum Limits**: GNNs trained on finite graphs may generalize to graphon-defined infinite networks.  
@@ -95,14 +99,14 @@ Using graphons ensures:
 
 ---
 
-## 4. Implementation & Results  
+## 5. Implementation & Results  
 | Model         | Architecture       | Task Type          | Loss           |  
 |---------------|--------------------|--------------------|----------------|  
 | `HeatGCN`     | 3-layer GCN        | Node regression    | MSE            |  
 | `SkipGramRW`  | Skip-gram + NCE    | Embedding learning | NCE loss       |  
 | `PercGCN`     | 3-layer GCN        | Node regression    | RMSE           | 
 
-### 4.1 Heat Diffusion
+### 5.1 Heat Diffusion
 
 **Dataset**
 - Nodes initial state and final state
@@ -115,14 +119,14 @@ Using graphons ensures:
 
 **Analysis**: Low MSE suggests GCNs effectively approximate Laplacian solvers.  
 
-### 4.2 SkipGramRW
+### 5.2 SkipGramRW
 
 I had issues implementing it, so I decided to remove it from the report.
 More precisely: 
 - I wanted to take inspiration from: [rusty1s/pytorch_cluster](https://github.com/rusty1s/pytorch_cluster/blob/master/torch_cluster/rw.py).
 - But I was unable to properly install the dependencies of [Pytorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html).
 
-### 4.3 Percolation
+### 5.3 Percolation
 **Dataset**
  - ![|300](resources/percolation_componant_size_data.png)
 
@@ -136,21 +140,21 @@ More precisely:
 
 ---
 
-## 5. Theoretical Perspectives on GNNs  
-### 5.1 GNN Architectures for Physical Modeling  
+## 6. Theoretical Perspectives on GNNs  
+### 6.1 GNN Architectures for Physical Modeling  
 - **Node-Level Regression** (HeatGCN, PercGCN):  
   - MPNN framework aggregates neighbor info via message passing .  
   - Aligns with elliptic PDE discretizations (e.g., $\nabla \cdot (k\nabla T) = q$).  
 - **Embedding Learning** (SkipGramRW):  
   - Implicitly models transition probabilities $P(u \rightarrow v)$.  
 
-### 5.2 Limitations & Future Work  
+### 6.2 Limitations & Future Work  
 - **Spectral vs Spatial Methods**: Current GCNs use spatial convolution; spectral methods (via graphon Fourier transforms) may better capture global patterns.  
 - **Graphon Continuum Limits**: Analyze GNN generalization to graphon-defined infinite graphs (operator learning perspective ).  
 - **Dynamics Modeling**: Replace static GCNs with temporal architectures (e.g., Graph Neural PDE ).  
 
 ---
 
-## 6. Conclusion  
+## 7. Conclusion  
 
 By combining graphon-sampled graphs with GNNs, we approximate physical phenomena while maintaining theoretical grounding. Early results validate the feasibility, but capturing phase transitions (percolation) and scaling to graphon limits remain open challenges. Future work could integrate graphon operator theory with GNN architecture design.  
