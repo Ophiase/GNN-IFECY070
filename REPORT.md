@@ -50,7 +50,50 @@ In ``graphon.ipynb`` we give examples of graphon samples from ``graphon_generato
 
 ---
 
-## 2. Graph Neural Network
+## 2. Graph Neural Networks (GNNs): Simple Overview
+
+Graph Neural Networks (GNNs) are deep learning models designed to work directly on graph-structured data. They learn to pass “messages” between nodes along edges, aggregate information from each node’s neighbors, and update node representations in a permutation-invariant way (no neighbor order biase). This makes them ideal for tasks where relationships or connectivity matter.
+
+### 2.1 Core Components
+
+- **Node features**: A set of attributes for each node (e.g., temperature, constant 1, embedding vector).  
+- **Edge list**: The graph’s connectivity, usually given as an index of node–node pairs.  
+- **Message passing**: At each layer, every node:
+  1. **Receives** messages from its neighbors (typically a linear transform of neighbor features).  
+  2. **Aggregates** those messages (e.g., by sum or mean).  
+  3. **Updates** its own feature (e.g., via another linear layer + nonlinearity).
+
+### 2.2 Common Layer Types
+
+- **GCNConv (Graph Convolutional Layer)**  
+  Implements a normalized average over neighbors:
+  $$ 
+  h_i^{(ℓ+1)} = \sigma\Bigl(\sum_{j \in \mathcal{N}(i) \cup \{i\}} \frac{1}{\sqrt{d_i\,d_j}} \, W^{(ℓ)}\,h_j^{(ℓ)}\Bigr)
+  $$
+  - Fast, scales with edges $O(|E|)$  
+  - Good for node-level regression or classification  
+
+- **Graph Attention (GATConv)**  
+  Learns attention weights to weight neighbor contributions:
+  $$
+  \alpha_{ij} = \mathrm{softmax}_j\bigl(\mathrm{LeakyReLU}(a^\top [W h_i \,\|\, W h_j])\bigr)
+  h_i' = \sigma\!\bigl(\sum_{j\in\mathcal{N}(i)} α_{ij}\,W\,h_j\bigr)
+  $$
+  - Captures asymmetric relationships
+  - More expressive, at the cost of compute
+
+- **Node2Vec (for embeddings)** \
+  Learns node embeddings by simulating random walks and using a skip-gram objective:
+  $$\max_f \sum_{(u,v)\in\mathcal{W}} \log \sigma(f(u){\cdot}f(v))
+  + k\,\mathbb{E}_{v_n}\log\sigma(-f(u){\cdot}f(v_n))$$
+  - Produces fixed-size vectors for each node
+  - Useful for link prediction, clustering, visualization
+
+### 2.4 When to use Which?
+
+- **HeatGCN** / **PercGCN**: When you need node-level regression or classification (e.g., temperatures, component sizes).
+- **GAT**: When edge importance varies and you want the model to learn weights.
+- **Node2Vec** / **SkipGramRW**: When you only need node embeddings for downstream tasks.
 
 ---
 
